@@ -1,9 +1,9 @@
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import './Header.css';
 import choose_Pic from '../../assets/choosePic.png';
-import coock from '../../assets/cook.png';
-import delivery from '../../assets/delivery.png';
-import thumbs from '../../assets/thumbs.png';
+import anhbanh from '../../assets/anhbanh.png';
+import dotxe from '../../assets/dotxe.png';
+import hailong from '../../assets/hailong.png';
 import HeaderFoot from '../HeaderFoot/HeaderFoot';
 
 const Header = () => {
@@ -16,11 +16,11 @@ const Header = () => {
               <span className='h_subTitle'>Muon dep trai, toi 30shine</span>
               <div className="w-75 mt-2 h_title">
                 <h1 style={{ color: 'rgb(127, 0, 255)' }}>NGo bA kHa</h1>
-                <h1 style={{ color: '#3D3F42' }}>With Our Nutritious</h1>
-                <h1 style={{ color: '#3D3F42' }}>Meal Plans</h1>
+                <h1 style={{ color: '#3D3F42' }}>Muon dep trai</h1>
+                <h1 style={{ color: '#3D3F42' }}>Toi ngay 30shine</h1>
               </div>
               <p className='text-secondary'>
-                Discover a world of delicious salad at our online salad paradise. salad meals are ready to eat in a minutes so save time energy.
+                Anh Banh oi em cat toc giong anh, bo em dam em khong truot phat nao
               </p>
               {/* <div className="d-flex justify-content-between align-items-start w-50 mt-4">
                 <Button className='bg_login fw-bold border-0'>order food</Button>
@@ -43,11 +43,11 @@ const Header = () => {
             <div className="box">
               <div className="boxContianer d-flex">
                 <div className="">
-                  <img src={coock} alt="coock" className='' style={{ width: '90%', height: '100%', objectFit: 'cover' }} />
+                  <img src={anhbanh} alt="anhbanh" className='' style={{ width: '120px', height: '120px', objectFit: 'cover', marginRight: '10px' }} />
                 </div>
                 <div className="w-100">
-                  <h5 style={{ color: '#3D3F42', fontWeight: 'bold' }}>Delicious Food</h5>
-                  <p className='text-secondary'>Delicious FoodLorem, ipsum dolor sit amet consectetur adipisicing elit. Officia, non!</p>
+                  <h5 style={{ color: '#3D3F42', fontWeight: 'bold' }}>69+ Hairstyles</h5>
+                  <p className='text-secondary'>Hon 69 kieu toc nhu long lon khac nhau cho ban lua chon Hon 69 kieu toc nhu long lon khac nhau cho ban lua chon</p>
                 </div>
               </div>
             </div>
@@ -56,11 +56,11 @@ const Header = () => {
             <div className="box">
               <div className="boxContianer d-flex">
                 <div className="">
-                  <img src={delivery} alt="coock" className='' style={{ width: '90%', height: '100%', objectFit: 'cover' }} />
+                  <img src={dotxe} alt="anhbanh" className='' style={{ width: '120px', height: '120px', objectFit: 'cover', marginRight: '10px' }} />
                 </div>
                 <div className="w-100">
-                  <h5 style={{ color: '#3D3F42', fontWeight: 'bold' }}>Fast Delivery</h5>
-                  <p className='text-secondary'>Delicious FoodLorem, ipsum dolor sit amet consectetur adipisicing elit. Officia, non!</p>
+                  <h5 style={{ color: '#3D3F42', fontWeight: 'bold' }}>Toc do cao</h5>
+                  <p className='text-secondary'>Chi voi 30p nhu cat toc ngoai tiem, chung toi se cho ban xem ban se trong nhu the nao ma khong can cat toc ngoai tiem</p>
                 </div>
               </div>
             </div>
@@ -69,15 +69,15 @@ const Header = () => {
             <div className="box">
               <div className="boxContianer d-flex">
                 <div className="">
-                  <img src={thumbs} alt="coock" className='' style={{ width: '90%', height: '100%', objectFit: 'cover' }} />
+                  <img src={hailong} alt="anhbanh" className='' style={{ width: '120px', height: '120px', objectFit: 'cover', marginRight: '10px' }} />
                 </div>
                 <div className="w-100">
                   <h5 style={{ color: '#3D3F42', fontWeight: 'bold' }}>Feedback
                     <small className='ms-3 fw-normal'>
                       <i className="fa-solid fa-star starr me-1"></i>
-                      4.8 (14.5k)
+                      4.8 (25k)
                     </small></h5>
-                  <p className='text-secondary'>Delicious FoodLorem, ipsum dolor sit amet consectetur adipisicing elit. Officia, non!</p>
+                  <p className='text-secondary'>"Toi rat hai long khi su dung dich vu cua khabanh.life" - anh Ngo Ba Kha, mot khach hang than thiet cua chung toi</p>
                 </div>
               </div>
             </div>

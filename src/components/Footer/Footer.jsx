@@ -44,8 +44,7 @@ const Footer = () => {
               <a href="index.html"><img src={logo} className="img-fluid" alt="logo" /></a>
             </div>
             <div className="footer-text">
-              <p>Lorem ipsum dolor sit amet, consec tetur adipisicing elit, sed do eiusmod tempor incididuntut consec tetur adipisicing
-                elit,Lorem ipsum dolor sit amet.</p>
+              <p>Điều tích cực của em là thường khuyên các bạn phải biết yêu thương bố mẹ. Tiêu cực cũng nhiều, như ăn chơi lêu lổng, nghịch ngợm, ngông cuồng, đốt xe, sống cuộc sống bầy đàn ngoài xã hội</p>
             </div>
             <div className="footer-social-icon">
               <span>Follow us</span>
@@ -80,7 +79,7 @@ const Footer = () => {
               <h3>Subscribe</h3>
             </div>
             <div className="footer-text mb-25">
-              <p>Don’t miss to subscribe to our new feeds, kindly fill the form below.</p>
+              <p>Các quản giáo chỉ bảo những điều mà em chưa bao giờ nhận ra và thấm thía như lúc này</p>
             </div>
             <div className="subscribe-form">
               <form action="#">
