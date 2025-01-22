@@ -10,6 +10,8 @@ ul {
 }
 .footer-cta {
   border-bottom: 1px solid #373636;
+  border-top: 1px solid #373636; /* Retains the line below */
+  margin-top: 50px;
 }
 .single-cta i {
   color: rgb(93, 63, 211);
