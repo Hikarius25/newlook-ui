@@ -7,7 +7,8 @@ import './GeneratedImage.css';
 const GeneratedImage = ({ activepage }) => {
   return (
     <div className="generated-image">
-      <h2 >Generated Image</h2>
+      <h2 >Generated Image</h2> 
+      <h6>(within 15 days)</h6>
 
       <div class="generated-image-container">
         <table class="generated-image-table">

@@ -5,6 +5,8 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Profile from './pages/Profile';
+import Function from './pages/Function';
+import Purchase from './pages/Purchase';
 
 
 const App = () => {
@@ -14,6 +16,8 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/profile/:activepage?" element={<Profile />} />
+        <Route path="/function" element={<Function />} />
+        <Route path="/purchase" element={<Purchase />} />
       </Routes>
   );
 };

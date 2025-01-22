@@ -5,6 +5,7 @@ import anhbanh from '../../assets/anhbanh.png';
 import dotxe from '../../assets/dotxe.png';
 import hailong from '../../assets/hailong.png';
 import HeaderFoot from '../HeaderFoot/HeaderFoot';
+import UploadImage from '../UploadImage/UploadImage';
 
 const Header = () => {
   return (
@@ -30,9 +31,10 @@ const Header = () => {
           </Col>
           <Col md={6}>
             <div className="head_right">
-              <div className="imageContainer d-flex justify-content-end align-items-center shadow-sm rounded">
+              {/* <div className="imageContainer d-flex justify-content-end align-items-center shadow-sm rounded">
                 <img src={choose_Pic} alt="choose-Picture" className='head_rightImg' />
-              </div>
+              </div> */}
+              <UploadImage/>
             </div>
           </Col>
         </Row>
