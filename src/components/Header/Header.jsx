@@ -1,11 +1,11 @@
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import './Header.css';
-import choose_Pic from '../../assets/choosePic.png';
 import anhbanh from '../../assets/anhbanh.png';
 import dotxe from '../../assets/dotxe.png';
 import hailong from '../../assets/hailong.png';
 import HeaderFoot from '../HeaderFoot/HeaderFoot';
 import UploadImage from '../UploadImage/UploadImage';
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -30,12 +30,17 @@ const Header = () => {
             </div>
           </Col>
           <Col md={6}>
-            <div className="head_right">
-              {/* <div className="imageContainer d-flex justify-content-end align-items-center shadow-sm rounded">
-                <img src={choose_Pic} alt="choose-Picture" className='head_rightImg' />
-              </div> */}
-              <UploadImage/>
+          <div className="head_right">
+            <div className="dragdrop">
+              <i className="fa-solid fa-cloud-arrow-down"></i>
+              <h4>Drag and drop your file.</h4>
+              <label htmlFor="upload-files">
+                <Link to="/function" className="upload-btn">
+                  Upload Image
+                </Link>
+              </label>
             </div>
+          </div>
           </Col>
         </Row>
 

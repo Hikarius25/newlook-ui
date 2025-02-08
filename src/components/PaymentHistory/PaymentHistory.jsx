@@ -9,8 +9,8 @@ const PaymentHistory = ({ activepage }) => {
     <div className="account-settings">
       <h2 >Payment History</h2>
 
-      <div class="payment-history-container">
-        <table class="payment-history-table">
+      <div className="payment-history-container">
+        <table className="payment-history-table">
           <thead>
             <tr>
               <th>Transaction ID</th>

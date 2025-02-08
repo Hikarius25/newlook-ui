@@ -3,12 +3,13 @@
     flex-direction: column;
     justify-content: center; 
     align-items: center;
-    border: 4px dashed gray;
+    border: 3px dashed gray;
     border-radius: 5px;
     background-color: rgba(0, 0, 0, 0.1);
     padding: 2rem;
     gap: 1rem;
-    height: 300px;
+    height: 90%;
+    
   }
   
   .dragdrop i {
@@ -34,6 +35,7 @@
     border: none;
     cursor: pointer;
     transition: 0.3s;
+    text-decoration: none;
   }
 
   .dragdrop .upload-btn:hover {
