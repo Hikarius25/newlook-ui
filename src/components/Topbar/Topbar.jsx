@@ -42,11 +42,11 @@ const Topbar = () => {
     try {
         const response = await axios.post(
             "http://localhost:10000/auth/logout",
-            { token, refreshToken }, // ✅ Sửa body để đúng format API yêu cầu
+            { token, refreshToken }, 
             {
                 headers: { 
                     Authorization: `Bearer ${token}`,
-                    "Content-Type": "application/json" // ✅ Đảm bảo gửi JSON chuẩn
+                    "Content-Type": "application/json" 
                 }
             }
         );

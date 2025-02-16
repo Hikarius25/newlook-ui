@@ -12,7 +12,7 @@ const Header = () => {
 
   const handleNavigateToFunction = (event) => {
     if (!isLoggedIn) {
-      event.preventDefault();  // Ngăn chặn chuyển trang
+      event.preventDefault();  
       alert("Log in mới được xài mày");
     }
   };

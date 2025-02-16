@@ -10,7 +10,7 @@ import PaymentHistory from '../components/PaymentHistory/PaymentHistory';
 import GeneratedImage from '../components/GeneratedImage/GeneratedImage';
 
 export default function Profile() {
-    const { activepage, userId } = useParams(); // Get userId from URL
+    const { activepage, userId } = useParams(); 
 
     return (
         <div>

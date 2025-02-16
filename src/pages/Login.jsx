@@ -27,17 +27,17 @@ export default function Login() {
     };
 
     const logInUser = async (event) => {
-        event.preventDefault(); // ✅ Ngăn form tự động submit
+        event.preventDefault(); 
         
         try {
             const response = await axios.post("http://localhost:10000/auth/token", { email, password });
     
             console.log("Full Login Response:", response.data);
-            console.log("Login Result:", response.data.result); // ✅ Debug để kiểm tra dữ liệu
+            console.log("Login Result:", response.data.result); 
     
             const { result } = response.data;
     
-            // 🛠 Sửa lại key lấy token
+   
             const accessToken = result.token;  
             const refreshToken = result.refreshToken;  
     
