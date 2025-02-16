@@ -7,7 +7,7 @@
     border-radius: 5px;
     background-color: rgba(0, 0, 0, 0.1);
     padding: 2rem;
-    height: 90%;
+    height: 250px;
     width: 100%;
     margin-right: 10px;
     margin-left: 10px;
@@ -17,10 +17,12 @@
   .dragdrop i {
     font-size: 5rem;
     color: lightgray;
+    margin-bottom: 25px;
   }
   
   .dragdrop h4 {
     color: #555;
+    margin-bottom: 25px;
   }
   
   .dragdrop label input {

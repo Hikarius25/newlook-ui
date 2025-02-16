@@ -11,8 +11,10 @@
 //   const [hairstyleImage, setHairstyleImage] = useState(null);
 //   const [hairColorImage, setHairColorImage] = useState(null);
 //   const [response, setResponse] = useState(null);
-//   const [loading, setLoading] = useState(false);
-//   const API_URL = "https://api-simulator-035d.onrender.com/process/";
+//   const [loadingUpload, setLoadingUpload] = useState(false);
+//   const [loadingDownload, setLoadingDownload] = useState(false);
+//   const API_URL = "http://localhost:10000/swap_hair_visual";
+//   const DOWNLOAD_API = "http://localhost:10000/swap_hair";
 
 //   const handleUpload = async () => {
 //     if (!faceImage || !hairstyleImage || !hairColorImage) {
@@ -20,21 +22,19 @@
 //       return;
 //     }
 
-//     setLoading(true);
+//     setLoadingUpload(true);
 //     const formData = new FormData();
-//     formData.append("face", faceImage);
-//     formData.append("shape", hairstyleImage);
-//     formData.append("color", hairColorImage);
+//     formData.append("face_image", faceImage);
+//     formData.append("hair_shape", hairstyleImage);
+//     formData.append("hair_color", hairColorImage);
 
 //     try {
 //       const res = await axios.post(API_URL, formData, {
-//         headers: {
-//           "Content-Type": "multipart/form-data",
-//         },
+//         headers: { "Content-Type": "multipart/form-data" },
 //         withCredentials: false,
-//         responseType: "blob", 
+//         responseType: "blob",
 //       });
-      
+
 //       const imageBlob = await res.data;
 //       const imageUrl = URL.createObjectURL(imageBlob);
 //       setResponse(imageUrl);
@@ -42,77 +42,100 @@
 //       console.error("Upload failed:", error);
 //       alert(`Upload failed! ${error.response?.data?.detail || error.message}`);
 //     } finally {
-//       setLoading(false);
+//       setLoadingUpload(false);
+//     }
+//   };
+
+//   const handleDownload = async () => {
+//     if (!response) {
+//       alert("No result available for download!");
+//       return;
+//     }
+
+//     setLoadingDownload(true);
+//     const formData = new FormData();
+//     formData.append("face_image", faceImage);
+//     formData.append("hair_shape", hairstyleImage);
+//     formData.append("hair_color", hairColorImage);
+
+//     try {
+//       const res = await axios.post(DOWNLOAD_API, formData, {
+//         headers: { "Content-Type": "multipart/form-data" },
+//         withCredentials: false,
+//         responseType: "blob",
+//       });
+      
+//       const url = window.URL.createObjectURL(new Blob([res.data]));
+//       const link = document.createElement("a");
+//       link.href = url;
+//       link.setAttribute("download", "hairstyle_result.png");
+//       document.body.appendChild(link);
+//       link.click();
+//       document.body.removeChild(link);
+//     } catch (error) {
+//       console.error("Download failed:", error);
+//       alert(`Download failed! ${error.response?.data?.detail || error.message}`);
+//     } finally {
+//       setLoadingDownload(false);
 //     }
 //   };
 
 //   const handleSetFile = (selectedFile, type) => {
 //     if (!selectedFile) return;
-
-//     if (type === "face") setFaceImage(selectedFile);
-//     else if (type === "hairstyle") setHairstyleImage(selectedFile);
-//     else if (type === "hairColor") setHairColorImage(selectedFile);
+//     if (type === "face_image") setFaceImage(selectedFile);
+//     else if (type === "hair_shape") setHairstyleImage(selectedFile);
+//     else if (type === "hair_color") setHairColorImage(selectedFile);
 //   };
 
 //   return (
 //     <div>
 //       <Topbar />
 //       <Container>
-//         <Row>
-//           <Col md={6} className="function-upload">
-//             <h2 className="title">Upload Your Images</h2>
+//         <Row className="function-container">
+//           <Col md={12} className="function-upload">
+//             <h2 className="title">UPLOAD YOUR IMAGES</h2>
 //             <div className="upload-sections">
 //               <div className="upload-item">
-//                 <h4>Face Image</h4>
+//                 <h4>Face <br /> Image</h4>
 //                 {faceImage ? (
-//                   <img
-//                     src={URL.createObjectURL(faceImage)}
-//                     alt="Face Preview"
-//                     className="image-preview"
-//                   />
+//                   <img src={URL.createObjectURL(faceImage)} alt="Face Preview" className="image-preview" />
 //                 ) : (
-//                   <UploadImage setFile={(file) => handleSetFile(file, "face")} accepts="image/*" />
+//                   <UploadImage setFile={(file) => handleSetFile(file, "face_image")} accepts="image/*" />
 //                 )}
 //               </div>
 //               <div className="upload-item">
-//                 <h4>Hairstyle Image</h4>
+//                 <h4>Hairstyle <br /> Image</h4>
 //                 {hairstyleImage ? (
-//                   <img
-//                     src={URL.createObjectURL(hairstyleImage)}
-//                     alt="Hairstyle Preview"
-//                     className="image-preview"
-//                   />
+//                   <img src={URL.createObjectURL(hairstyleImage)} alt="Hairstyle Preview" className="image-preview" />
 //                 ) : (
-//                   <UploadImage setFile={(file) => handleSetFile(file, "hairstyle")} accepts="image/*" />
+//                   <UploadImage setFile={(file) => handleSetFile(file, "hair_shape")} accepts="image/*" />
 //                 )}
 //               </div>
 //               <div className="upload-item">
-//                 <h4>Hair Color Image</h4>
+//                 <h4>Hair <br /> Color <br /> Image</h4>
 //                 {hairColorImage ? (
-//                   <img
-//                     src={URL.createObjectURL(hairColorImage)}
-//                     alt="Hair Color Preview"
-//                     className="image-preview"
-//                   />
+//                   <img src={URL.createObjectURL(hairColorImage)} alt="Hair Color Preview" className="image-preview" />
 //                 ) : (
-//                   <UploadImage setFile={(file) => handleSetFile(file, "hairColor")} accepts="image/*" />
+//                   <UploadImage setFile={(file) => handleSetFile(file, "hair_color")} accepts="image/*" />
 //                 )}
 //               </div>
 //             </div>
 
-//             <button className="upload-btn" onClick={handleUpload} disabled={loading}>
-//               {loading ? <Spinner animation="border" size="sm" /> : "Upload to API"}
+//             <button className="upload-btn" onClick={handleUpload} disabled={loadingUpload}>
+//               {loadingUpload ? <Spinner animation="border" size="sm" /> : "Biến hình đê"}
 //             </button>
+//             {response && (
+//               <button className="upload-btn" onClick={handleDownload} disabled={loadingDownload}>
+//                 {loadingDownload ? <Spinner animation="border" size="sm" /> : "Tải xuống kết quả"}
+//               </button>
+//             )}
 //           </Col>
-//           <Col md={6} className="response-box">
+
+//           <Col md={12} className="result-container">
 //             {response && (
 //               <div>
 //                 <h4>Result:</h4>
-//                 <img
-//                   src={response}
-//                   alt="Generated Result"
-//                   className="result-image"
-//                 />
+//                 <img src={response} alt="Generated Result" className="result-image" />
 //               </div>
 //             )}
 //           </Col>
@@ -137,8 +160,10 @@ export default function Function() {
   const [hairstyleImage, setHairstyleImage] = useState(null);
   const [hairColorImage, setHairColorImage] = useState(null);
   const [response, setResponse] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const API_URL = "https://api-simulator-035d.onrender.com/process/";
+  const [loadingUpload, setLoadingUpload] = useState(false);
+  const [loadingDownload, setLoadingDownload] = useState(false);
+  const API_URL = "http://localhost:10000/swap_hair_visual";
+  const DOWNLOAD_API = "http://localhost:10000/swap_hair";
 
   const handleUpload = async () => {
     if (!faceImage || !hairstyleImage || !hairColorImage) {
@@ -146,21 +171,19 @@ export default function Function() {
       return;
     }
 
-    setLoading(true);
+    setLoadingUpload(true);
     const formData = new FormData();
-    formData.append("face", faceImage);
-    formData.append("shape", hairstyleImage);
-    formData.append("color", hairColorImage);
+    formData.append("faceImage", faceImage);
+    formData.append("hairShape", hairstyleImage);
+    formData.append("hairColor", hairColorImage);
 
     try {
       const res = await axios.post(API_URL, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
+        headers: { "Content-Type": "multipart/form-data" },
         withCredentials: false,
-        responseType: "blob", 
+        responseType: "blob",
       });
-      
+
       const imageBlob = await res.data;
       const imageUrl = URL.createObjectURL(imageBlob);
       setResponse(imageUrl);
@@ -168,16 +191,49 @@ export default function Function() {
       console.error("Upload failed:", error);
       alert(`Upload failed! ${error.response?.data?.detail || error.message}`);
     } finally {
-      setLoading(false);
+      setLoadingUpload(false);
+    }
+  };
+
+  const handleDownload = async () => {
+    if (!response) {
+      alert("No result available for download!");
+      return;
+    }
+
+    setLoadingDownload(true);
+    const formData = new FormData();
+    formData.append("faceImage", faceImage);
+    formData.append("hairShape", hairstyleImage);
+    formData.append("hairColor", hairColorImage);
+
+    try {
+      const res = await axios.post(DOWNLOAD_API, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+        withCredentials: false,
+        responseType: "blob",
+      });
+      
+      const url = window.URL.createObjectURL(new Blob([res.data]));
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", "hairstyle_result.png");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (error) {
+      console.error("Download failed:", error);
+      alert(`Download failed! ${error.response?.data?.detail || error.message}`);
+    } finally {
+      setLoadingDownload(false);
     }
   };
 
   const handleSetFile = (selectedFile, type) => {
     if (!selectedFile) return;
-
-    if (type === "face") setFaceImage(selectedFile);
-    else if (type === "hairstyle") setHairstyleImage(selectedFile);
-    else if (type === "hairColor") setHairColorImage(selectedFile);
+    if (type === "face_image") setFaceImage(selectedFile);
+    else if (type === "hair_shape") setHairstyleImage(selectedFile);
+    else if (type === "hair_color") setHairColorImage(selectedFile);
   };
 
   return (
@@ -189,58 +245,46 @@ export default function Function() {
             <h2 className="title">UPLOAD YOUR IMAGES</h2>
             <div className="upload-sections">
               <div className="upload-item">
-                <h4>Face <br/> Image</h4>
+                <h4>Face <br /> Image</h4>
                 {faceImage ? (
-                  <img
-                    src={URL.createObjectURL(faceImage)}
-                    alt="Face Preview"
-                    className="image-preview"
-                  />
+                  <img src={URL.createObjectURL(faceImage)} alt="Face Preview" className="image-preview" />
                 ) : (
-                  <UploadImage setFile={(file) => handleSetFile(file, "face")} accepts="image/*" />
+                  <UploadImage setFile={(file) => handleSetFile(file, "face_image")} accepts="image/*" />
                 )}
               </div>
               <div className="upload-item">
-                <h4>Hairstyle <br/> Image</h4>
+                <h4>Hairstyle <br /> Image</h4>
                 {hairstyleImage ? (
-                  <img
-                    src={URL.createObjectURL(hairstyleImage)}
-                    alt="Hairstyle Preview"
-                    className="image-preview"
-                  />
+                  <img src={URL.createObjectURL(hairstyleImage)} alt="Hairstyle Preview" className="image-preview" />
                 ) : (
-                  <UploadImage setFile={(file) => handleSetFile(file, "hairstyle")} accepts="image/*" />
+                  <UploadImage setFile={(file) => handleSetFile(file, "hair_shape")} accepts="image/*" />
                 )}
               </div>
               <div className="upload-item">
-                <h4>Hair <br/> Color <br/> Image</h4>
+                <h4>Hair <br /> Color <br /> Image</h4>
                 {hairColorImage ? (
-                  <img
-                    src={URL.createObjectURL(hairColorImage)}
-                    alt="Hair Color Preview"
-                    className="image-preview"
-                  />
+                  <img src={URL.createObjectURL(hairColorImage)} alt="Hair Color Preview" className="image-preview" />
                 ) : (
-                  <UploadImage setFile={(file) => handleSetFile(file, "hairColor")} accepts="image/*" />
+                  <UploadImage setFile={(file) => handleSetFile(file, "hair_color")} accepts="image/*" />
                 )}
               </div>
             </div>
 
-            <button className="upload-btn" onClick={handleUpload} disabled={loading}>
-              {loading ? <Spinner animation="border" size="sm" /> : "Cùng đẹp trai nào"}
+            <button className="upload-btn" onClick={handleUpload} disabled={loadingUpload}>
+              {loadingUpload ? <Spinner animation="border" size="sm" /> : "Biến hình đê"}
             </button>
+            {response && (
+              <button className="upload-btn" onClick={handleDownload} disabled={loadingDownload}>
+                {loadingDownload ? <Spinner animation="border" size="sm" /> : "Tải xuống kết quả"}
+              </button>
+            )}
           </Col>
 
-          {/* Container for displaying result image */}
           <Col md={12} className="result-container">
             {response && (
               <div>
                 <h4>Result:</h4>
-                <img
-                  src={response}
-                  alt="Generated Result"
-                  className="result-image"
-                />
+                <img src={response} alt="Generated Result" className="result-image" />
               </div>
             )}
           </Col>

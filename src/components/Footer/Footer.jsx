@@ -12,7 +12,7 @@ const Footer = () => {
             <i className="fas fa-map-marker-alt" />
             <div className="cta-text">
               <h4>Find us</h4>
-              <span>1010 Avenue, sw 54321, chandigarh</span>
+              <span>Đường Hàn Thuyên, khu phố 6 P, <br /> Thủ Đức, Hồ Chí Minh</span>
             </div>
           </div>
         </div>
@@ -21,7 +21,7 @@ const Footer = () => {
             <i className="fas fa-phone" />
             <div className="cta-text">
               <h4>Call us</h4>
-              <span>9876543210 0</span>
+              <span>028 3725 2002</span>
             </div>
           </div>
         </div>
@@ -30,7 +30,7 @@ const Footer = () => {
             <i className="far fa-envelope-open" />
             <div className="cta-text">
               <h4>Mail us</h4>
-              <span>mail@info.com</span>
+              <span>info@uit.edu.vn</span>
             </div>
           </div>
         </div>
@@ -44,7 +44,7 @@ const Footer = () => {
               <a href="index.html"><img src={logo} className="img-fluid" alt="logo" /></a>
             </div>
             <div className="footer-text">
-              <p>Điều tích cực của em là thường khuyên các bạn phải biết yêu thương bố mẹ. Tiêu cực cũng nhiều, như ăn chơi lêu lổng, nghịch ngợm, ngông cuồng, đốt xe, sống cuộc sống bầy đàn ngoài xã hội</p>
+              <p>Khabanh.life is a unique website that uses artificial intelligence (AI) to help users transform their hairstyle quickly and effortlessly.</p>
             </div>
             <div className="footer-social-icon">
               <span>Follow us</span>
@@ -79,7 +79,7 @@ const Footer = () => {
               <h3>Subscribe</h3>
             </div>
             <div className="footer-text mb-25">
-              <p>Các quản giáo chỉ bảo những điều mà em chưa bao giờ nhận ra và thấm thía như lúc này</p>
+              <p>With its user-friendly interface, the platform allows you to explore new hairstyles without stepping into a salon or making any permanent changes.</p>
             </div>
             <div className="subscribe-form">
               <form action="#">

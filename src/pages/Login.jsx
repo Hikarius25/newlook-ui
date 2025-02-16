@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Icon } from 'react-icons-kit';
 import { eyeOff } from 'react-icons-kit/feather/eyeOff';
 import { eye } from 'react-icons-kit/feather/eye';
@@ -27,42 +27,55 @@ export default function Login() {
     };
 
     const logInUser = async (event) => {
-        event.preventDefault();
-        if (email.length === 0 || password.length === 0) {
-            alert("Please fill in all fields");
-        } else {
-            try {
-                const response = await axios.post('http://localhost:10000/auth/token', {
-                    email: email, 
-                    password: password
-                });
-                console.log(response.data);
-                localStorage.setItem("token", response.data.access_token); 
-                navigate("/home"); 
-            } catch (error) {
-                console.error(error);
-                if (error.response && error.response.status === 401) {
-                    alert("Incorrect email or password");
-                } else {
-                    alert("An error occurred");
-                }
+        event.preventDefault(); // ✅ Ngăn form tự động submit
+        
+        try {
+            const response = await axios.post("http://localhost:10000/auth/token", { email, password });
+    
+            console.log("Full Login Response:", response.data);
+            console.log("Login Result:", response.data.result); // ✅ Debug để kiểm tra dữ liệu
+    
+            const { result } = response.data;
+    
+            // 🛠 Sửa lại key lấy token
+            const accessToken = result.token;  
+            const refreshToken = result.refreshToken;  
+    
+            if (!accessToken || !refreshToken) {
+                console.error("Login failed: No token received!", result);
+                alert("Login failed, please try again.");
+                return;
             }
+    
+            localStorage.setItem("token", accessToken);
+            localStorage.setItem("refreshToken", refreshToken);
+            
+            console.log("Saved token:", localStorage.getItem("token"));
+            console.log("Saved refreshToken:", localStorage.getItem("refreshToken"));
+    
+            navigate("/home"); 
+        } catch (error) {
+            console.error("Login error:", error);
+            alert("Login failed, please try again.");
         }
     };
+    
+    
+    
 
     return (
         <div className='login-body'>
             <div className='login-wrapper'>
                 <h1>
                     <span style={{ position: 'absolute', left: '25px', top: '35px' }}>
-                        <Link to="/">
+                        <Link to="/home">
                             <span className='login-back'>◄ Back</span>
                         </Link>
                     </span>
                     Log in to Khabanh
                 </h1>
                 <form onSubmit={logInUser}>
-                    <div className="login-input-box">
+                <div className="login-input-box">
                         <input
                             type='text'
                             placeholder='Email address'
